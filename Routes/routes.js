@@ -277,16 +277,14 @@ app.delete('/user/:id',(req,res)=>{
         return res.status(404).json(`no such id ${id}`);
       }
     })
-      // .then(() => {
-      //   QuestionModel.findOne({_id: id })
-      //   .then(result =>{res.status(200).json(result)})
-      //  })
+      
        .catch(err => {
          console.log(err);
          res.status(500).json({
            error: err,
            message:`Id is wrong`
          });
+         
        });
     AnswerModel.findById(req.params.id)
     .then(questions=> res.json(questions))
