@@ -1,7 +1,7 @@
 
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config';
 import mongoose from 'mongoose';
 import connectDB from './Models/mongosqlConfig.js';
 import {app} from './Routes/routes.js';
