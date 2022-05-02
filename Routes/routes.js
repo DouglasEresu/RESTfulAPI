@@ -287,7 +287,6 @@ app.delete('/user/:id',(req,res)=>{
          
        });
     AnswerModel.findById(req.params.id)
-    .then(questions=> res.json(questions))
     .then(answers=> res.json(answers))
     .catch((err) => {
       res.status(500).json({

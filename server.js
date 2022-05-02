@@ -15,12 +15,8 @@ connectDB();
 const port = process.env.PORT||3005;
 const server = express();
 
-// Security
-server.get('/api', (req,res) => {
-  res.send({
-    message: 'Hi, welcome to the Ibm api'
-  })
-})
+
+
 
 
 //read
