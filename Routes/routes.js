@@ -183,33 +183,33 @@ app.delete('/user/:id',(req,res)=>{
     });
     
     // VIEW QNS USING USER id
-    app.get('/questions/:id',(req,res)=>{ 
-      const id = req.params.id;
-      UserModel.findOne({_id: id })
-       .then(userId =>{
-         if (!userId) {
-        return res.status(404).json(`no such id ${id}`);
-      }
-    })
-      // .then(() => {
-      //   UserModel.findOne({_id: id })
-      //   .then(result =>{res.status(200).json(result)})
-      //  })
-       .catch(err => {
-         console.log(err);
-         res.status(500).json({
-           error: err,
-           message:`Id is wrong`
-         });
-       });
-    QuestionModel.findById(req.params.id)
-    .then(questions => res.json(questions))
-    .catch((err) => {
-      res.status(500).json({
-        message:`server error:${err}`
-      })
-    })
-    });
+    // app.get('/questions/:id',(req,res)=>{ 
+    //   const id = req.params.id;
+    //   UserModel.findOne({_id: id })
+    //    .then(userId =>{
+    //      if (!userId) {
+    //     return res.status(404).json(`no such id ${id}`);
+    //   }
+    // })
+    //   // .then(() => {
+    //   //   UserModel.findOne({_id: id })
+    //   //   .then(result =>{res.status(200).json(result)})
+    //   //  })
+    //    .catch(err => {
+    //      console.log(err);
+    //      res.status(500).json({
+    //        error: err,
+    //        message:`Id is wrong`
+    //      });
+    //    });
+    // QuestionModel.findById(req.params.id)
+    // .then(questions => res.json(questions))
+    // .catch((err) => {
+    //   res.status(500).json({
+    //     message:`server error:${err}`
+    //   })
+    // })
+    // });
 
 
     // POST QNS USING USER id
@@ -269,31 +269,31 @@ app.delete('/user/:id',(req,res)=>{
     
 
     // VIEW ANSWERS TO QUESTIONS BY QN id
-    app.get('/answers/:id',(req,res)=>{
-      const id = req.params.id;
-      QuestionModel.findOne({_id: id })
-       .then(questionId =>{
-         if (!questionId) {
-        return res.status(404).json(`no such id ${id}`);
-      }
-    })
+    // app.get('/answers/:id',(req,res)=>{
+    //   const id = req.params.id;
+    //   QuestionModel.findOne({_id: id })
+    //    .then(questionId =>{
+    //      if (!questionId) {
+    //     return res.status(404).json(`no such id ${id}`);
+    //   }
+    // })
       
-       .catch(err => {
-         console.log(err);
-         res.status(500).json({
-           error: err,
-           message:`Id is wrong`
-         });
+    //    .catch(err => {
+    //      console.log(err);
+    //      res.status(500).json({
+    //        error: err,
+    //        message:`Id is wrong`
+    //      });
          
-       });
-    AnswerModel.findById(req.params.id)
-    .then(answers=> res.json(answers))
-    .catch((err) => {
-      res.status(500).json({
-        message:`server error:${err}`
-      })
-    })
-    });
+    //    });
+    // AnswerModel.findById(req.params.id)
+    // .then(answers=> res.json(answers))
+    // .catch((err) => {
+    //   res.status(500).json({
+    //     message:`server error:${err}`
+    //   })
+    // })
+    // });
 
     // PoST ANSWERS USING QN id
       app.post('/answers/:id', (req,res)=>{
