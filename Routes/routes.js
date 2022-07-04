@@ -1,17 +1,21 @@
+import 'dotenv/config'
 import express from 'express';
 import {UserModel} from '../Models/user.js'
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+
 // import joi from 'joi';
 import { signupSchema,loginSchema } from "../utils/validation.js";
 // import auth from '../Utils/auth.js';
 import { QuestionModel } from '../Models/questions.js';
 import { AnswerModel } from '../Models/ans.js';
+
+
+
 export const app = express.Router();
 
 
 // SIGNUP
-app.post("/signup",  async (req, res) => {
+app.post("/signup", async (req, res) => {
     
   try {
       const result  = await signupSchema.validateAsync(req.body);
@@ -56,7 +60,7 @@ app.post("/signup",  async (req, res) => {
 app.post('/login', async (req, res) => {
 try {
   const result  = await loginSchema.validateAsync(req.body);
-// console.log(result)
+
   const user = await UserModel.findOne({ email: result.email });
   if (!user || !(await bcrypt.compare(result.password, user.password))) {
     return res.status(400).json(`Invalid email or password`);
@@ -82,6 +86,7 @@ try {
 })
 }
 });
+
 
 
 
